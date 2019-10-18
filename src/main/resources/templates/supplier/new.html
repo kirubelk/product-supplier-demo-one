@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Kalu">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+    <title>eLibrary - a demo spring boot webapp featuring CRUD - New Book Form</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a style="padding-right: 2em;" class="navbar-brand" href="/elibrary/home">eLibrary : : : a CRUD demo webapp</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                    <a class="nav-link" href="/srm/product/list">Products</a>
+                </li>
+                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
+                    <a class="nav-link" href="/srm/supplier/list">Supplier</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <span style="color:#fff;padding-left: 2em; padding-right: 1em;">Welcome, Guest</span>
+                <!--<a style="color: #ffffff; margin-right: 0em;" class="nav-link" href="#">John Doe</a>-->
+                <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+                <a href="#" class="btn btn-secondary">Sign In</a>
+            </form>
+        </div>
+    </nav>
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">New Supplier Form</span>
+        </div>
+
+        <form id="newBookForm" method="post" action="/srm/supplier/new" th:object="${supplier}">
+            <fieldset>
+                <input type="hidden" name="supplierId" th:value="${supplier.supplierId}"/>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="supplierNumber">Supplier Number</label>
+                            <span th:if="${#fields.hasErrors('supplierNumber')}" th:errors="*{supplierNumber}"
+                                  class="alert alert-danger"></span>
+                            <input id="supplierNumber" name="supplierNumber" type="text" class="form-control"
+                                   th:value="${supplier.supplierNumber}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="supplierName">Supplier Name</label>
+                            <span th:if="${#fields.hasErrors('supplierName')}" th:errors="*{supplierName}"
+                                  class="alert alert-danger"></span>
+                            <input id="supplierName" name="supplierName" type="text" class="form-control"
+                                   th:value="${supplier.supplierName}">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                  class="alert alert-danger"></span>
+                            <input id="phoneNumber" name="phoneNumber" type="phoneNumber" class="form-control" th:value="${supplier.phoneNumber}">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="float:right;">
+                    <a href="/elibrary/book/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Supplier</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <!-- Footer -->
+        <footer class="page-footer font-small" style="background-color:black; position: fixed; left:0; bottom:0; width:100%">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright: 
+            <a href="https://mdbootstrap.com/education/bootstrap/" style="margin-left:20px"> KKT.com</a>
+        </div>
+        <!-- Copyright -->
+
+        </footer>
+    <!-- Footer -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>
