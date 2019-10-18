@@ -47,7 +47,6 @@ public class Product {
 
     @NotNull(message = "* Quantity in stock is required")
     @Digits(integer = 9, fraction = 0, message = "* Quantity must be a positive, integral value")
-    @PositiveOrZero(message = "* Quantity must be a positive, integral value")
     @Column(name = "quantity_inStock")
     private Integer quantityInStock;
 
